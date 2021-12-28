@@ -6,6 +6,7 @@ import urllib.request
 import cv2
 import easyocr
 import numpy as np
+import pandas as pd
 from pyzbar.pyzbar import decode
 
 
@@ -58,10 +59,16 @@ def get_img(url):
         print('图片下载失败', error)
 
 
+def get_data():
+    pd.set_option('display.max_columns', None)
+    df = pd.read_excel('./test.xlsx', index_col=0, header=1)
+    print(df)
+
+
 if __name__ == '__main__':
     # ocr_img('./20211225/20211225003000.jpg')
     # detect_qr_code('./20211225/2021122501010000.jpg')
     # detect_qr_code('./20211225/20211225013054.jpg')
     # detect_qr_color('./20211225/2021122501010000.jpg')
     # detect_qr_color('./20211225/20211225013054.jpg')
-    get_img('url')
+    get_data()
